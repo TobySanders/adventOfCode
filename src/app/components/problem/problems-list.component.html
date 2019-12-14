@@ -1,0 +1,5 @@
+<div class="container py-5">
+    <div class="card-deck mb-3 text-center" *ngFor="let problem of Problems">
+        <problem [problem]="problem" [problemResolver] = "GetProblemResolver(problem?.Id)"></problem>
+    </div>
+</div>

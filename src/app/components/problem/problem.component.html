@@ -1,0 +1,16 @@
+<div class="card mb-4 shadow-sm">
+  <div class="card-header">
+    <h1>{{problem?.Title}}</h1>
+  </div>
+  <div class="card-body">
+    <p class="card-text text-muted mb-3">{{problem?.Description}}</p>
+    <br/>
+    <p class="card-text">{{problem?.Question}}</p>
+    <div class="mb-3"><input class="form-control mb-3" #input type="text" placeholder="Place your input here" /><button class="btn btn-lg btn-block btn-outline-primary"
+        (click)="onSubmitClicked(input.value)">Submit!</button></div>
+    <div [hidden]="problem.Result==null">
+      <span>The Result is: </span>
+      <span>{{problem?.Result}}</span>
+    </div>
+  </div>
+</div>
