@@ -3,7 +3,6 @@ import { IProblemResolver } from './problemResolver.service';
 
 @Injectable()
 export class Day1ResolverService implements IProblemResolver {
-
     ngOnInit(): void {
         console.log("Day 1 problem Resolver Created")
     }
@@ -25,7 +24,34 @@ export class Day1ResolverService implements IProblemResolver {
         console.log(`total fuel needed is: ${total}`)
         return total.toString()
     }
+m
+    ResolveAdvancedProblem(input: string): string {
+        console.log("Solving advanced fuel calculation")
+        var splitInput = (input +'').split(" ");
+        var total : number = 0; 
 
+        splitInput.forEach(element => {
+            total += this.CalculateAdditionalFuel(+element);
+        });
+
+        return total.toString();
+    }
+
+    CalculateAdditionalFuel(input: number){
+        var additionalFuel = this.CalculateFuel(input);
+        console.log(`additional fuel: ${additionalFuel}`)
+        if(additionalFuel > 0){
+            console.log('fuel too heavy recursing');
+            additionalFuel += this.CalculateAdditionalFuel(additionalFuel);
+            console.log(`Added ${additionalFuel} to fuel total`)
+        }
+        else{
+            console.log('All Fuel weights calculated, returning')
+            additionalFuel = 0;
+        }
+        return additionalFuel
+
+    }
     CalculateFuel(input : number) : number {
         var result = Math.floor(input / 3);
         return result -= 2;

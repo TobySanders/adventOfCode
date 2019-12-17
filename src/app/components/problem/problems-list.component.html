@@ -1,5 +1,11 @@
-<div class="container py-5">
-    <div class="card-deck mb-3 text-center" *ngFor="let problem of Problems">
-        <problem [problem]="problem" [problemResolver] = "GetProblemResolver(problem?.Id)"></problem>
+<div class="row">
+  <!-- <side-bar [problemsRef]="problemWrappers"></side-bar> -->
+  <div class="container py-5 col-8">
+    <div  class="card-deck mb-3 text-center" *ngFor="let problemWrapper of problemWrappers; let i = index">
+      <div class="col">
+        <problem-wrapper #problemsRef [id] = "i" [problemWrapper]="problemWrapper" [problemResolver]="GetProblemResolver(problemWrapper?.Id) ">
+        </problem-wrapper>
+      </div>
     </div>
+  </div>
 </div>

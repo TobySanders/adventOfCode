@@ -1,0 +1,8 @@
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h1>{{problemWrapper?.Title}}</h1>
+    </div>
+    <div class="card-body" *ngFor="let problem of problemWrapper.Problems; let i = index" style="padding: 0 !important; box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12) !important;">
+        <problem [problem]="problem" [problemResolver]="problemResolver" [index]= "i" ></problem>
+    </div>
+</div>

@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { ProblemProviderService } from 'src/app/services/problem-provider/problem-provider.service';
-import { Problem } from 'src/app/services/problem-provider/problem.interface';
-import { IProblemResolver } from 'src/app/services/problem-resolver/problemResolver.service';
-import { ProblemResolverFactoryService } from 'src/app/services/problem-resolver/problemResolverFactory.service';
+import { ProblemWrapper } from '../../services/problem-provider/problemwrapper.interface';
+import { ProblemProviderService } from '../../services/problem-provider/problem-provider.service';
+import { ProblemResolverFactoryService } from '../../services/problem-resolver/problemResolverFactory.service';
+import { IProblemResolver } from '../../services/problem-resolver/problemResolver.service';
 
 @Component({
     selector: 'problems-list',
     templateUrl: './problems-list.component.html',
 })
 export class ProblemsListComponent implements OnInit {
-    Problems : Problem []
+    problemWrappers : ProblemWrapper []
 
     constructor(private problemProvider : ProblemProviderService, private problemResolverFactory : ProblemResolverFactoryService) { }
 
     ngOnInit(): void { 
-        this.Problems = this.problemProvider.GetProblems();
+        this.problemWrappers = this.problemProvider.GetProblems();
+        console.log(this.problemWrappers)
     }
     GetProblemResolver(id : number) : IProblemResolver{
         return this.problemResolverFactory.GetProblemResolver(id)
